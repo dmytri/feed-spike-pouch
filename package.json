@@ -1,0 +1,18 @@
+{
+  "name": "Feed Spike Pouch",
+  "version": "1.0.0",
+  "description": "Spike of RSS Feeds w/ Pouch",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmytri Kleiner <dkleiner@thoughtworks.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-pouchdb": "^0.17.2",
+    "pouchdb": "^4.0.3",
+    "riot": "^2.2.4",
+    "serve-static": "^1.10.0"
+  }
+}

@@ -1,0 +1,10 @@
+*.swp
+node_modules/
+log.txt
+config.json
+.config.json
+_replicator/
+_users/
+feeds/
+pouch__all_dbs__/
+pouch__auth_sessions__/
