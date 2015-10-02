@@ -1,5 +1,5 @@
 {
-  "name": "Feed Spike Pouch",
+  "name": "feed-spike-pouch",
   "version": "1.0.0",
   "description": "Spike of RSS Feeds w/ Pouch",
   "main": "app.js",
@@ -11,8 +11,10 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-pouchdb": "^0.17.2",
+    "jquery": "^2.1.4",
     "pouchdb": "^4.0.3",
     "riot": "^2.2.4",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "traceur": "0.0.91"
   }
 }

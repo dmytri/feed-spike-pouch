@@ -1,11 +1,11 @@
-<feed-list>
+<feed-list class="middle">
 
   <h3>Feeds</h3>
 
   <ul>
     <li each={ opts.items }>
         <form>
-          <a href="doc.href">{ doc.title || doc.href }</a>
+          <a href="#read/doc.href">{ doc.title || doc.href }</a>
           <button value="{ doc._id }" onclick="{ delete }">delete</button>
         </form>
     </li>
@@ -25,7 +25,7 @@
 
     var _self = this
     var feed_list = opts
- 
+
     feed_list.on('changes', function feedListChanges () {
       console.log('update feed list')
       _self.update()
@@ -33,7 +33,7 @@
 
     add(e) {
       if (this.text) {
-        feed_list.addFeed(this.text)
+        feed_list.addDoc(this.text)
         this.text = this.input.value = ''
       }
     }
@@ -43,7 +43,7 @@
     }
 
     delete(e) {
-      feed_list.deleteFeed(e.target.value)
+      feed_list.deleteDoc(e.target.value)
     }
 
 

@@ -2,12 +2,19 @@
   <head>
     <title>Feed Me!</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="/pouch/pouchdb.min.js"></script>
+    <script src="/traceur/traceur.js"></script>
+    <script src="/systemjs/system.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
     <script src="/riot/riot+compiler.min.js"></script>
+    <script src="/pouch/pouchdb.min.js"></script>
   </head>
   <body>
+    <user-signin></user-signin>
     <feed-list></feed-list>
+    <script src="/lib/tags/user-signin.tag" type="riot/tag"></script>
     <script src="/lib/tags/feed-list.tag" type="riot/tag"></script>
-    <script src="/lib/init.js"></script>
+    <script>
+      System.import('/lib/main.js');
+    </script>
   </body>
 </html>
