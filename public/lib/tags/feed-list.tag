@@ -16,6 +16,10 @@
     <button disabled={ !text }>Add #{ opts.items.length + 1 }</button>
   </form>
 
+  <form onsubmit={ signout }>
+    <button>signout</button>
+  </form>
+
   <style>
     feed-list { display: block }
     feed-list h3 { font-size: 120% }
@@ -46,6 +50,10 @@
       feed_list.deleteDoc(e.target.value)
     }
 
+    signout(e) {
+      feed_list.signout()
+      this.unmount(true)
+    }
 
   </script>
 

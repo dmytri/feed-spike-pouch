@@ -1,9 +1,13 @@
-import { auth, home } from 'lib/views.js'
+/* globals sessionStorage */
+
+import { auth_view, home_view } from 'lib/views.js'
 (function main () {
   if (!sessionStorage.user) {
-    auth()
+    console.log('signed out')
+    auth_view()
   } else {
-    home()
+    console.log('signed in')
+    home_view()
   }
 }())
 
