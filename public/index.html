@@ -6,11 +6,15 @@
     <script src="/systemjs/system.js"></script>
     <script src="/jquery/jquery.min.js"></script>
     <script src="/riot/riot+compiler.min.js"></script>
+    <script src="/riotgear/rg.min.js"></script>
     <script src="/pouch/pouchdb.min.js"></script>
   </head>
   <body>
     <user-signin></user-signin>
+    <div id="ui">
     <feed-list></feed-list>
+    <feed-view></feed-view>
+    </div>
     <script src="/lib/tags/user-signin.tag" type="riot/tag"></script>
     <script src="/lib/tags/feed-list.tag" type="riot/tag"></script>
     <script>

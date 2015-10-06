@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   var express = require('express')
   var PouchDB = require('pouchdb')
@@ -13,6 +13,8 @@
     , express.static(__dirname + '/node_modules/jquery/dist'))
   app.use('/riot'
     , express.static(__dirname + '/node_modules/riot'))
+  app.use('/riotgear'
+    , express.static(__dirname + '/node_modules/riotgear/dist'))
   app.use('/pouch'
     , express.static(__dirname + '/node_modules/pouchdb/dist'))
   app.use('/'

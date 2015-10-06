@@ -5,6 +5,6 @@ config.json
 .config.json
 _replicator/
 _users/
-feeds/
+feeds_user*
 pouch__all_dbs__/
 pouch__auth_sessions__/

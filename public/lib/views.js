@@ -1,28 +1,31 @@
-/* globals sessionStorage, riot, PouchDB, $ */
+/* globals riot */
 
-import { Pouch } from 'lib/pouch.js'
+import { Session, FeedList } from 'lib/models.js'
 
 export function auth_view () {
-  function Session () {
-    this.signin = function signin (username) {
-      sessionStorage.setItem('user', username)
-        home_view()
-    }
-  }
   var session = new Session()
-  riot.mount('user-signin', session)
-  console.log('auth_view')
+  session.on('signedout', function () {
+    session.signout()
+    riot.mount('user-signin', { model: session })
+  })
+  session.on('signedin', function () {
+    home_view(session)
+  })
+  if (session.signedin()) session.trigger('signedin')
+  else session.trigger('signedout')
 }
 
-export function home_view () {
-  console.log('home_view')
-  var _user_db = '/feeds/user/' + sessionStorage['user']
-  var feed_list = new Pouch(_user_db)
-  feed_list.on('signout', function () {
-    auth_view()
-  })
-  riot.mount('feed-list', feed_list)
-  feed_list.trigger('init')
+export function home_view (session) {
+  if (!session.signedin()) session.trigger('signedout')
+  else {
+    var _user_db = 'feeds_user_' + session.signedin()
+    var feed_list = new FeedList(_user_db, function () {
+      riot.mount('feed-list', { model: feed_list })
+    })
+    feed_list.on('signout', function () {
+      session.trigger('signedout')
+    })
+  }
 }
 
 /* vim set tabstop=2 shiftwidth=2 expandtab */

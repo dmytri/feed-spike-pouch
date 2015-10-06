@@ -6,13 +6,11 @@
   </form>
 
   <script>
-    var session = opts
-
     editUsername(e) {
       this.username = e.target.value
     }
     signin(e) {
-      session.signin(this.username)
+      opts.model.signin(this.username)
       this.unmount(true)
     }
   </script>

@@ -3,22 +3,24 @@
   <h3>Feeds</h3>
 
   <ul>
-    <li each={ opts.items }>
+    <li each={ opts.model.items }>
         <form>
-          <a href="#read/doc.href">{ doc.title || doc.href }</a>
+          <a href="#read/doc.href" onclick={ showModal }>{ doc.title || doc.href }</a>
           <button value="{ doc._id }" onclick="{ delete }">delete</button>
         </form>
     </li>
   </ul>
 
   <form onsubmit={ add }>
-    <input name="input" onkeyup={ edit }>
-    <button disabled={ !text }>Add #{ opts.items.length + 1 }</button>
+    <input name="input" onkeyup={ edit }></input>
+    <button disabled={ !text }>Add #{ opts.model.items.length + 1 }</button>
   </form>
 
   <form onsubmit={ signout }>
     <button>signout</button>
   </form>
+
+  <rg-modal modal="{ modal }">Hello Modal</rg-modal>
 
   <style>
     feed-list { display: block }
@@ -27,17 +29,9 @@
 
   <script>
 
-    var _self = this
-    var feed_list = opts
-
-    feed_list.on('changes', function feedListChanges () {
-      console.log('update feed list')
-      _self.update()
-    })
-
     add(e) {
       if (this.text) {
-        feed_list.addDoc(this.text)
+        opts.model.add(this.text)
         this.text = this.input.value = ''
       }
     }
@@ -47,12 +41,24 @@
     }
 
     delete(e) {
-      feed_list.deleteDoc(e.target.value)
+      opts.model.remove(e.target.value)
     }
 
     signout(e) {
-      feed_list.signout()
+      opts.model.signout()
       this.unmount(true)
+    }
+
+    showModal(e) {
+      this.modal.visible = true
+    }
+
+    this.modal = {
+        heading: 'Modal heading',
+        visible: false,
+        ghost: false,
+        close: true,
+        onclose: function (e) {}
     }
 
   </script>
