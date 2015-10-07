@@ -4,7 +4,7 @@
   var PouchDB = require('pouchdb')
   var app = express()
 
-  // Front End
+  // Front End Assets
   app.use('/traceur'
     , express.static(__dirname + '/node_modules/traceur/bin'))
   app.use('/systemjs'
@@ -15,6 +15,8 @@
     , express.static(__dirname + '/node_modules/riot'))
   app.use('/riotgear'
     , express.static(__dirname + '/node_modules/riotgear/dist'))
+  app.use('/validator'
+    , express.static(__dirname + '/node_modules/validator'))
   app.use('/pouch'
     , express.static(__dirname + '/node_modules/pouchdb/dist'))
   app.use('/'

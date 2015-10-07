@@ -1,33 +1,33 @@
 /* globals sessionStorage, riot */
 
-import { DB } from 'lib/pouchdb.js'
 
-export function Session () {
+export function Session (storage) {
   riot.observable(this)
   var self = this
   this.signedin = function () {
-    return sessionStorage['user']
+    return storage['user']
   }
 
   this.signout = function (username) {
-    sessionStorage.removeItem('user')
+    storage.removeItem('user')
+    self.trigger('signedout')
   }
 
   this.signin = function (username) {
-    sessionStorage.setItem('user', username)
+    storage.setItem('user', username)
     self.trigger('signedin')
   }
 }
 
-export function FeedList (db, callback) {
+export function FeedList (Pouch, db_name, callback) {
   riot.observable(this)
   var self = this
   this.items = []
-  this.db = new DB(db, function (rows) {
+  this.db = new Pouch(db_name, function (rows) {
     self.items = rows
     callback()
   })
-  this.db.sync('http://localhost:5000/db/' + db, { live: true, retry: true })
+  this.db.sync('http://localhost:5000/db/' + db_name, { live: true, retry: true })
   this.getItems = function () {
     return this.items
   }

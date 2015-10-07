@@ -4,7 +4,8 @@
   "description": "Spike of RSS Feeds w/ Pouch",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "jasmine"
   },
   "author": "Dmytri Kleiner <dkleiner@thoughtworks.com>",
   "license": "ISC",
@@ -17,6 +18,10 @@
     "riotgear": "^1.17.2",
     "serve-static": "^1.10.0",
     "systemjs": "^0.19.3",
-    "traceur": "0.0.91"
+    "traceur": "0.0.91",
+    "validator": "^4.1.0"
+  },
+  "devDependencies": {
+    "jasmine": "^2.3.2"
   }
 }

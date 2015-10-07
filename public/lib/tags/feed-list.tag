@@ -11,6 +11,8 @@
     </li>
   </ul>
 
+
+  <rg-alert alerts="{ alerts }"></rg-alert>
   <form onsubmit={ add }>
     <input name="input" onkeyup={ edit }></input>
     <button disabled={ !text }>Add #{ opts.model.items.length + 1 }</button>
@@ -28,16 +30,19 @@
   </style>
 
   <script>
-
     add(e) {
-      if (this.text) {
+      if (validator.isURL(this.text)) {
         opts.model.add(this.text)
         this.text = this.input.value = ''
+      } else {
+        this.alerts.push({ type: 'danger', msg: 'enter a valid RSS or Atom URL', timeout: 2000 })
       }
     }
 
     edit(e) {
       this.text = e.target.value
+      e.target.style['background-color'] = validator.isURL(this.text) ? '' : '#FFCED8'
+      
     }
 
     delete(e) {
@@ -60,6 +65,7 @@
         close: true,
         onclose: function (e) {}
     }
+    this.alerts = []
 
   </script>
 

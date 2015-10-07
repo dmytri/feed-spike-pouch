@@ -1,6 +1,6 @@
 /* globals PouchDB */
 
-export function DB (db, callback) {
+export function Pouch (db, callback) {
 
   var pouch = new PouchDB(db)
   console.log('watch changes for ' + db)
