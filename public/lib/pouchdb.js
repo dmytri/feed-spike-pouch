@@ -1,8 +1,6 @@
 /* globals PouchDB */
-
 ;(function () {
   function Pouch (db_name, callback) {
-
     var db = new PouchDB(db_name)
     console.log('watch changes for ' + db_name)
     db.changes({ live: true, since: 'now' }).on('change', function () { fetch() })
@@ -56,7 +54,6 @@
         console.log(err)
       })
     }
-
   }
 
   module.exports = { Pouch: Pouch }

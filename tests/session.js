@@ -1,7 +1,6 @@
-
-/* eslint-disable no-undef */
+/* eslint-disable */
 riot = require('riot')
-/* eslint-enable no-undef */
+/* eslint-enable */
 
 var tap = require('tap')
 

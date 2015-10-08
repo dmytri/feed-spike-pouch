@@ -1,5 +1,4 @@
-(function () {
-
+;(function () {
   var express = require('express')
   var PouchDB = require('pouchdb')
   var app = express()
@@ -30,7 +29,6 @@
   app.listen(port)
 
   console.log('listening on port ' + port)
-
 }())
 
 // vim set tabstop=2 shiftwidth=2 expandtab

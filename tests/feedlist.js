@@ -1,9 +1,9 @@
 /* globals riot */
-/* eslint-disable no-undef */
+/* eslint-disable */
 PouchDB = require('pouchdb')
 validator = require('validator')
 riot = require('riot')
-/* eslint-enable no-undef */
+/* eslint-enable */
 
 var tap = require('tap')
 
