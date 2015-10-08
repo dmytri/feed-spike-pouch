@@ -6,19 +6,19 @@
 
   // Front End Assets
   app.use('/traceur'
-    , express.static(__dirname + '/node_modules/traceur/bin'))
+    , express.static(__dirname + '/node_modules/traceur'))
   app.use('/systemjs'
-    , express.static(__dirname + '/node_modules/systemjs/dist'))
+    , express.static(__dirname + '/node_modules/systemjs'))
   app.use('/jquery'
-    , express.static(__dirname + '/node_modules/jquery/dist'))
+    , express.static(__dirname + '/node_modules/jquery'))
   app.use('/riot'
     , express.static(__dirname + '/node_modules/riot'))
   app.use('/riotgear'
-    , express.static(__dirname + '/node_modules/riotgear/dist'))
+    , express.static(__dirname + '/node_modules/riotgear'))
   app.use('/validator'
     , express.static(__dirname + '/node_modules/validator'))
-  app.use('/pouch'
-    , express.static(__dirname + '/node_modules/pouchdb/dist'))
+  app.use('/pouchdb'
+    , express.static(__dirname + '/node_modules/pouchdb'))
   app.use('/'
     , express.static(__dirname + '/public'))
 

@@ -11,15 +11,10 @@
     </li>
   </ul>
 
-
   <rg-alert alerts="{ alerts }"></rg-alert>
   <form onsubmit={ add }>
     <input name="input" onkeyup={ edit }></input>
     <button disabled={ !text }>Add #{ opts.model.items.length + 1 }</button>
-  </form>
-
-  <form onsubmit={ signout }>
-    <button>signout</button>
   </form>
 
   <rg-modal modal="{ modal }">Hello Modal</rg-modal>
@@ -30,28 +25,23 @@
   </style>
 
   <script>
+    var self = this
+    opts.model.on('unmount', function () {
+      self.unmount(true)
+    })
+
     add(e) {
-      if (validator.isURL(this.text)) {
-        opts.model.add(this.text)
-        this.text = this.input.value = ''
-      } else {
-        this.alerts.push({ type: 'danger', msg: 'enter a valid RSS or Atom URL', timeout: 2000 })
-      }
+      try { opts.model.add(this.text) }
+      catch(e) { self.alerts.push({ type: 'danger', msg: e, timeout: 2000 }) }
     }
 
     edit(e) {
       this.text = e.target.value
       e.target.style['background-color'] = validator.isURL(this.text) ? '' : '#FFCED8'
-      
     }
 
     delete(e) {
       opts.model.remove(e.target.value)
-    }
-
-    signout(e) {
-      opts.model.signout()
-      this.unmount(true)
     }
 
     showModal(e) {

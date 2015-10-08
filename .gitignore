@@ -6,5 +6,7 @@ config.json
 _replicator/
 _users/
 feeds_user*
+test_feeds_user
 pouch__all_dbs__/
 pouch__auth_sessions__/
+.nyc_output

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "jasmine"
+    "test": "tap tests/*.js --coverage"
   },
   "author": "Dmytri Kleiner <dkleiner@thoughtworks.com>",
   "license": "ISC",
@@ -22,6 +22,6 @@
     "validator": "^4.1.0"
   },
   "devDependencies": {
-    "jasmine": "^2.3.2"
+    "tap": "^2.1.0"
   }
 }
