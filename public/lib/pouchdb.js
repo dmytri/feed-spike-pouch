@@ -42,13 +42,21 @@
 
     this.addDoc = function (doc, callback) {
       db.post(doc).then(function (response) {
-        if (typeof callback === 'function') callback()
-      }).catch(function postError (err) {
+        if (typeof callback === 'function') callback(response)
+      }).catch(function (err) {
         console.log('post error')
         console.log(err)
       })
     }
 
+    this.getDoc = function (id, callback) {
+      db.get(id).then(function (response) {
+        if (typeof callback === 'function') callback(response)
+      }).catch(function (err) {
+        console.log('get error')
+        console.log(err)
+      })
+    }
     this.deleteDoc = function (docId) {
       db.get(docId).then(function (doc) {
         db.remove(doc)

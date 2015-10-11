@@ -24,16 +24,19 @@ tap.test('can not add an invalid url', function (t) {
   t.end()
 })
 
-tap.test('can add a valid url', function (t) {
-  test_events.one('db_ready', function () {
+test_events.one('db_ready', function () {
+  tap.test('can add a valid url', function (t) {
     var test_feed = 'https://googleblog.blogspot.de/atom.xml'
     feed_list.add(test_feed, function (response) {
       t.test('my url is added', function (tt) {
-        tt.equal(feed_list.items[0].doc.href, test_feed)
-        tt.end()
+        feed_list.get(response.id, function (doc) {
+          tt.equal(doc.href, test_feed)
+          tt.end()
+        })
       })
+      t.ok(response.ok)
+      t.end()
     })
-    t.end()
   })
 })
 

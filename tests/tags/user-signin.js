@@ -1,3 +1,4 @@
+/* globals $ */
 
 var setup = require('../setup.js')
 var tap = require('tap')
@@ -20,15 +21,15 @@ riotdom('<html><body><user-signin></user-signin</body></html>', function (mount)
 
   tap.test('when signedin', function (t) {
     session.on('signedin', function () {
-      t.test('the session model has test user set', function(tt) {
+      t.test('the session model has test user set', function (tt) {
         tt.equal(session.signedin(), 'test_user')
         tt.end()
       })
-      t.test('the signin form is not visible', function(tt) {
+      t.test('the signin form is not visible', function (tt) {
         tt.equal($('#signinForm').css('display'), 'none')
         tt.end()
       })
-      t.test('the signout form is visible', function(tt) {
+      t.test('the signout form is visible', function (tt) {
         tt.notEqual($('#signoutForm').css('display'), 'none')
         tt.end()
       })
@@ -41,15 +42,15 @@ riotdom('<html><body><user-signin></user-signin</body></html>', function (mount)
 
   tap.test('when signedout', function (t) {
     session.on('signedout', function () {
-      t.test('the session model has no user set', function(tt) {
+      t.test('the session model has no user set', function (tt) {
         tt.notOk(session.signedin())
         tt.end()
       })
-      t.test('the signout form is not visible', function(tt) {
+      t.test('the signout form is not visible', function (tt) {
         tt.equal($('#signoutForm').css('display'), 'none')
         tt.end()
       })
-      t.test('the signin form is visible', function(tt) {
+      t.test('the signin form is visible', function (tt) {
         tt.notEqual($('#signinForm').css('display'), 'none')
         tt.end()
       })

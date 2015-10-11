@@ -22,17 +22,21 @@
   function FeedList (Pouch, db_name, callback) {
     riot.observable(this)
     var self = this
-    this.items = []
-    this.db = new Pouch(db_name, function (rows) {
+    var db = new Pouch(db_name, function (rows) {
       self.items = rows
       if (typeof callback === 'function') callback()
     })
-    this.sync = this.db.sync
-    this.truncate = this.db.truncate
-    this.remove = this.db.deleteDoc
-    this.add = function (href) {
-      if (validator.isURL(href)) self.db.addDoc({href: href})
-      else throw new Error('Enter a valid RSS or Atom URL')
+    this.items = []
+    this.sync = db.sync
+    this.truncate = db.truncate
+    this.remove = db.deleteDoc
+    this.get = db.getDoc
+    this.add = function (href, callback) {
+      if (validator.isURL(href)) {
+        db.addDoc({href: href}, function (response) {
+          if (typeof callback === 'function') callback(response)
+        })
+      } else throw new Error('Enter a valid Atom or RSS URL')
     }
   }
 

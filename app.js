@@ -22,7 +22,7 @@
     , express.static(__dirname + '/public'))
 
   // Database
-  var InMemPouchDB = PouchDB.defaults({db: require('memdown')});
+  var InMemPouchDB = PouchDB.defaults({db: require('memdown')})
   app.use('/db',
     require('express-pouchdb')(InMemPouchDB))
 
