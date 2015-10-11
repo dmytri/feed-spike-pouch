@@ -1,8 +1,8 @@
 <user-signin class="middle">
   <div id="signinForm">
     <h3>Sign In</h3>
-    <form onsubmit={ signin }>
-      <input onkeyup={ editUsername }>
+    <form id="_signinForm" onsubmit={ signin }>
+      <input id="username" onkeyup={ editUsername }>
       <button disabled={ !username }>OK</button>
     </form>
   </div>
@@ -19,6 +19,7 @@
       this.username = e.target.value
     }
     signin(e) {
+      this.username = $('#username').val()
       $('#signinForm').hide()
       $('#signoutForm').show()
       opts.model.signin(this.username)
