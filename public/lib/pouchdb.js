@@ -40,8 +40,10 @@
       })
     }
 
-    this.addDoc = function (doc) {
-      db.post(doc).catch(function postError (err) {
+    this.addDoc = function (doc, callback) {
+      db.post(doc).then(function (response) {
+        if (typeof callback === 'function') callback()
+      }).catch(function postError (err) {
         console.log('post error')
         console.log(err)
       })

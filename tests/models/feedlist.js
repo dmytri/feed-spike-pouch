@@ -1,17 +1,13 @@
 /* globals riot */
-/* eslint-disable */
-PouchDB = require('pouchdb')
-validator = require('validator')
-riot = require('riot')
-/* eslint-enable */
 
+require('../setup.js')
 var tap = require('tap')
 
 var Pouch = require('../../public/lib/pouchdb.js').Pouch
 var FeedList = require('../../public/lib/models.js').FeedList
-var _user_db = 'test_feeds_user'
+var user_db = 'test_feeds_user'
 
-var feed_list = new FeedList(Pouch, _user_db, function () {
+var feed_list = new FeedList(Pouch, user_db, function () {
   feed_list.truncate(function () {
     test_events.trigger('db_ready')
   })
@@ -31,10 +27,11 @@ tap.test('can not add an invalid url', function (t) {
 tap.test('can add a valid url', function (t) {
   test_events.one('db_ready', function () {
     var test_feed = 'https://googleblog.blogspot.de/atom.xml'
-    feed_list.add(test_feed)
-    t.test('my url is added', function (tt) {
-      tt.equal(feed_list.items[0].doc.href, test_feed)
-      tt.end()
+    feed_list.add(test_feed, function (response) {
+      t.test('my url is added', function (tt) {
+        tt.equal(feed_list.items[0].doc.href, test_feed)
+        tt.end()
+      })
     })
     t.end()
   })

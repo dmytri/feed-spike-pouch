@@ -1,4 +1,11 @@
 /* globals riot */
+/* eslint-disable */
+validator = require('validator')
+riot = require('riot')
+var _PouchDB = require('pouchdb')
+PouchDB = _PouchDB.defaults({db: require('memdown')});
+/* eslint-enable */
+
 var fs = require('fs')
 
 function riotdom (html, callback) {
@@ -6,8 +13,8 @@ function riotdom (html, callback) {
   jsdom.env({
     html: html,
     scripts: [
-      __dirname + '/../node_modules/riot/riot+compiler.min.js',
-      __dirname + '/../node_modules/jquery/dist/jquery.min.js'
+      __dirname + '/../node_modules/jquery/dist/jquery.min.js',
+      __dirname + '/../node_modules/riot/riot+compiler.min.js'
     ],
     features: {
       FetchExternalResources: ['script'],
@@ -16,8 +23,8 @@ function riotdom (html, callback) {
     done: function (errors, window) {
       if (errors != null) console.log('Errors', errors)
       /* eslint-disable */
-      riot = window.riot
       $ = window.$
+      riot = window.riot
       /* eslint-enable */
       function mount (tagfile, opts) {
         var def = fs.readFileSync(tagfile).toString()

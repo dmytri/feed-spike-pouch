@@ -22,8 +22,9 @@
     , express.static(__dirname + '/public'))
 
   // Database
+  var InMemPouchDB = PouchDB.defaults({db: require('memdown')});
   app.use('/db',
-  require('express-pouchdb')(PouchDB))
+    require('express-pouchdb')(InMemPouchDB))
 
   var port = process.env.PORT || 5000
   app.listen(port)

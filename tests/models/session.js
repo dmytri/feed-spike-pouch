@@ -1,10 +1,8 @@
-/* eslint-disable */
-riot = require('riot')
-/* eslint-enable */
 
+var setup = require('../setup.js')
 var tap = require('tap')
 
-var StorageMock = require('../helpers.js').StorageMock
+var StorageMock = setup.StorageMock
 var Session = require('../../public/lib/models.js').Session
 
 var storage = new StorageMock()

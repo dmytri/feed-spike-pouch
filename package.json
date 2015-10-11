@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "jsdom": "^6.5.1",
+    "memdown": "^1.1.0",
     "tap": "^2.1.0"
   }
 }

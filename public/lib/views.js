@@ -18,12 +18,12 @@
         console.log('signedout')
         feed_list.trigger('unmount')
       })
-      var _user_db = 'feeds_user_' + session.signedin()
-      var feed_list = new FeedList(Pouch, _user_db, function () {
+      var user_db = 'feeds_user_' + session.signedin()
+      var feed_list = new FeedList(Pouch, user_db, function () {
         console.log('mount feed-list')
         riot.mount('feed-list', { model: feed_list })
       })
-      feed_list.sync('http://localhost:5000/db/' + _user_db, { live: true, retry: true })
+      feed_list.sync('http://localhost:5000/db/' + user_db, { live: true, retry: true })
     }
   }
 
