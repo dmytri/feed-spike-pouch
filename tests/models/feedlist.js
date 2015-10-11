@@ -7,8 +7,8 @@ riot = require('riot')
 
 var tap = require('tap')
 
-var Pouch = require('../public/lib/pouchdb.js').Pouch
-var FeedList = require('../public/lib/models.js').FeedList
+var Pouch = require('../../public/lib/pouchdb.js').Pouch
+var FeedList = require('../../public/lib/models.js').FeedList
 var _user_db = 'test_feeds_user'
 
 var feed_list = new FeedList(Pouch, _user_db, function () {

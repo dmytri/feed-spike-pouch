@@ -27,6 +27,7 @@
       self.items = rows
       if (typeof callback === 'function') callback()
     })
+    this.sync = this.db.sync
     this.truncate = this.db.truncate
     this.remove = this.db.deleteDoc
     this.add = function (href) {

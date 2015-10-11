@@ -23,7 +23,7 @@
         console.log('mount feed-list')
         riot.mount('feed-list', { model: feed_list })
       })
-      feed_list.db.sync('http://localhost:5000/db/' + _user_db, { live: true, retry: true })
+      feed_list.sync('http://localhost:5000/db/' + _user_db, { live: true, retry: true })
     }
   }
 

@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "tap tests/*.js --coverage"
+    "test": "tap tests/**/*.js --coverage"
   },
   "author": "Dmytri Kleiner <dkleiner@thoughtworks.com>",
   "license": "ISC",
@@ -22,6 +22,7 @@
     "validator": "^4.1.0"
   },
   "devDependencies": {
+    "jsdom": "^6.5.1",
     "tap": "^2.1.0"
   }
 }

@@ -4,20 +4,8 @@ riot = require('riot')
 
 var tap = require('tap')
 
-var Session = require('../public/lib/models.js').Session
-
-function StorageMock () {
-  var store = {}
-  this.setItem = function (item, value) {
-    store[item] = value
-  }
-  this.getItem = function (item) {
-    return store[item]
-  }
-  this.removeItem = function (item) {
-    delete store[item]
-  }
-}
+var StorageMock = require('../helpers.js').StorageMock
+var Session = require('../../public/lib/models.js').Session
 
 var storage = new StorageMock()
 var session = new Session(storage)

@@ -2,7 +2,7 @@
   <div id="signinForm">
     <h3>Sign In</h3>
     <form onsubmit={ signin }>
-      <input onkeyup={ editUsername }></input>
+      <input onkeyup={ editUsername }>
       <button disabled={ !username }>OK</button>
     </form>
   </div>
