@@ -2,11 +2,11 @@
   <head>
     <title>Feed Me!</title>
     <link rel="stylesheet" href="css/main.css">
-    <script src="/traceur/bin/traceur.js"></script>
-    <script src="/systemjs/dist/system.js"></script>
-    <script src="/jquery/dist/jquery.min.js"></script>
-    <script src="/pouchdb/dist/pouchdb.min.js"></script>
+    <script src="/traceur/traceur.js"></script>
+    <script src="/systemjs/system.js"></script>
+    <script src="/jquery/jquery.min.js"></script>
     <script src="/validator/validator.min.js"></script>
+    <script src="/pouchdb/pouchdb.min.js"></script>
   </head>
   <body>
     <div id="ui">
@@ -16,7 +16,11 @@
     <script src="/lib/tags/user-signin.tag" type="riot/tag"></script>
     <script src="/lib/tags/feed-list.tag" type="riot/tag"></script>
     <script>
-      System.import('/lib/main.js');
+    var config
+    $.getJSON('/config.json', function (json){
+      config = json
+      System.import('/lib/main.js')
+    })
     </script>
   </body>
 </html>

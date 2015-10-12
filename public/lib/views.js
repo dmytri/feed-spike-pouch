@@ -15,15 +15,13 @@
   function home_view (session, Pouch) {
     if (session.signedin()) {
       session.on('signedout', function () {
-        console.log('signedout')
         feed_list.trigger('unmount')
       })
       var user_db = 'feeds_user_' + session.signedin()
       var feed_list = new FeedList(Pouch, user_db, function () {
-        console.log('mount feed-list')
         riot.mount('feed-list', { model: feed_list })
       })
-      feed_list.sync('http://localhost:5000/db/' + user_db, { live: true, retry: true })
+      feed_list.sync(config.db + user_db, { live: true, retry: true })
     }
   }
 
